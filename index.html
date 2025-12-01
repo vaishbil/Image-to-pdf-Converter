@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Premium Image → PDF Converter</title>
+
+  <!-- Cropper.js CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="topbar">
+      <h1 class="logo">Image To PDF</h1>
+      <p class="tag">Image → PDF </p>
+    </header>
+
+    <section class="uploader-card">
+      <div id="drop-area" class="drop-area">
+        <input id="file-input" type="file" accept="image/*" multiple hidden>
+        <button id="select-btn" class="btn">Select Images</button>
+        <p>or drag & drop images here</p>
+        <small class="hint">Supported: JPG, PNG, WebP. You can crop each image before generating the PDF.</small>
+      </div>
+
+      <div class="controls">
+        <label>
+          PDF Page Size:
+          <select id="page-size">
+            <option value="a4">A4 (210mm × 297mm)</option>
+            <option value="letter">Letter (8.5 × 11 in)</option>
+            <option value="custom">Custom (use image size)</option>
+          </select>
+        </label>
+
+        <label>
+          Image Quality:
+          <select id="quality">
+            <option value="0.95">High (0.95)</option>
+            <option value="0.8" selected>Medium (0.8)</option>
+            <option value="0.6">Low (0.6)</option>
+          </select>
+        </label>
+
+        <label>
+          Orientation:
+          <select id="orientation">
+            <option value="portrait" selected>Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select>
+        </label>
+
+        <div class="action-group">
+          <button id="generate-btn" class="btn primary">Generate PDF</button>
+          <button id="clear-btn" class="btn ghost">Clear All</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="preview-panel">
+      <h2>Images</h2>
+      <div id="thumb-list" class="thumb-list">
+        <!-- Thumbnails will appear here -->
+      </div>
+      <div id="empty-hint" class="empty-hint">No images selected yet.</div>
+    </section>
+
+    <footer class="footer">
+      <small>Made with ♥ — vaishali wankhede</small>
+    </footer>
+  </main>
+
+  <!-- Cropper Modal -->
+  <div id="crop-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Crop Image</h3>
+        <button id="close-crop" class="btn small">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="cropper-wrap">
+          <img id="crop-image" src="" alt="To crop">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="reset-crop" class="btn ghost small">Reset</button>
+        <button id="crop-save" class="btn primary small">Apply Crop</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: jsPDF and Cropper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+  <!-- App JS -->
+  <script src="script.js"></script>
+</body>
+</html>
